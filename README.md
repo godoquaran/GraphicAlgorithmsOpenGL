@@ -1,7 +1,8 @@
 # GraphicsAlgorithmsOpenGL
 * Graphics Algorithms in OpenGL
-1. lineDDA
-1. circle
+1. LineDDA
+2. Line Bresenham
+3. Circle
 
 * Software
   1. MSYS2
