@@ -13,11 +13,11 @@
 
 ```makefile
 CC = g++
-CFLAGS = -c -Wall -Werror -Wextra -pedantic -std=c++11 -I/mingw64/include
+CFLAGS = -c -Wall -Wextra -pedantic -I/mingw64/include
 LFLAGS = -L/mingw64/lib -lfreeglut -lopengl32 -lglu32 -lglew32 -Wl,--subsystem,windows
-SOURCE = app.cpp
+SOURCE = alg.cpp
 OBJ = $(SOURCE:.c=.o)
-EXE = app
+EXE = alg
 all: $(SOURCE) $(EXE)
 $(EXE): $(OBJ)
 	$(CC) $(OBJ) $(LFLAGS) -o $@

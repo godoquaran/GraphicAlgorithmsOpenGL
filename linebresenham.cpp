@@ -13,31 +13,39 @@ void setPixel (GLint xCoord, GLint yCoord)
 	glEnd ( );
 }
 
-void lineDDA (int x0, int y0, int xEnd, int yEnd)
+/* Bresenham line-drawing procedure for |m| < 1.0. */
+void lineBres (int x0, int y0, int xEnd, int yEnd)
 {
-	int dx = xEnd - x0;
-	int dy = yEnd - y0;
-	int steps;
-	int k;
-	float xIncrement;
-	float yIncrement;
-	float x = x0;
-	float y = y0;
-	if (fabs (dx) > fabs (dy)) {
-		steps = fabs (dx);
+	int dx = fabs (xEnd - x0);
+	int dy = fabs(yEnd - y0);
+	int p = 2 * dy - dx;
+	int twoDy = 2 * dy;
+	int twoDyMinusDx = 2 * (dy - dx);
+	int x;
+	int y;
+	/* Determine which endpoint to use as start position. */
+	if (x0 > xEnd) {
+		x = xEnd;
+		y = yEnd;
+		xEnd = x0;
 	}
 	else {
-		steps = fabs (dy);
+		x = x0;
+		y = y0;
 	}
-	xIncrement = float (dx) / float (steps);
-	yIncrement = float (dy) / float (steps);
-	setPixel (round (x), round (y));
-	for (k = 0; k < steps; k++) {
-		x += xIncrement;
-		y += yIncrement;
-		setPixel (round (x), round (y));
+	setPixel (x, y);
+	while (x < xEnd) {
+		x++;
+		if (p < 0) {
+			p += twoDy;
+		}
+		else {
+			y++;
+			p += twoDyMinusDx;
+		}
+		setPixel (x, y);
 	}
-}
+}	
 
 void init (void)
 {
@@ -50,7 +58,7 @@ void displayFcn (void)
 {
 	glClear (GL_COLOR_BUFFER_BIT);
 	glColor3f (0.0, 0.0, 1.0); 
-	lineDDA ( 130, 50, 300, 275);
+	lineBres ( 130, 50, 300, 275);
 	glFlush ( );
 }
 
