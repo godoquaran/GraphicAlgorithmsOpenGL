@@ -79,7 +79,7 @@ int main (int argc, char** argv)
 	glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
 	glutInitWindowPosition (100, 100);
 	glutInitWindowSize (winWidth, winHeight);
-	glutCreateWindow ("lineDDA");
+	glutCreateWindow ("Algorithm - Line Bresenham");
 	init ( );
 	glutDisplayFunc (displayFcn);
 	glutReshapeFunc (winReshapeFcn);
