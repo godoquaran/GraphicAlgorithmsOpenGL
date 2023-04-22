@@ -3,12 +3,18 @@
 
 1. LineDDA
 2. Line Bresenham
-3. Midpoint Circle
+3. Circle Midpoint
+4. Ellipse Midpoint
 
 ## Software 
 
 - MSYS2
 - pacman -S mingw-w64-x86_64-toolchain
+	- mingw-w64-x86_64-binutils
+	- mingw-w64-x86_64-gcc
+	- mingw-w64-x86_64-gcc-libs
+	- mingw-w64-x86_64-make
+	- mingw-w64-x86_64-pkgconf
 - pacman -S mingw-w64-x86_64-freeglut
 - pacman -S mingw-w64-x86_64-glew
 - g++ -c -o alg.o alg.cpp -I/mingw64/include
@@ -18,11 +24,11 @@
 
 ```makefile
 CC = g++
-CFLAGS = -c -Wall -Wextra -pedantic -I/mingw64/include
+CFLAGS = -c -Wall -Werror -Wextra -pedantic -std=c++11 -g -I/mingw64/include
 LFLAGS = -L/mingw64/lib -lfreeglut -lopengl32 -lglu32 -lglew32 -Wl,--subsystem,windows
-SOURCE = alg.cpp
+SOURCE = my_code.cpp
 OBJ = $(SOURCE:.cpp=.o)
-EXE = alg
+EXE = my_code
 all: $(SOURCE) $(EXE)
 $(EXE): $(OBJ)
 	$(CC) $(OBJ) $(LFLAGS) -o $@
