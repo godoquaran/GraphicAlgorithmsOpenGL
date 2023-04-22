@@ -103,7 +103,7 @@ int main (int argc, char** argv)
 	glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
 	glutInitWindowPosition (100, 100);
 	glutInitWindowSize (winWidth, winHeight);
-	glutCreateWindow ("Algorithm - Midpoint Circle");
+	glutCreateWindow ("Algorithm - Circle Midpoint");
 	init ( );
 	glutDisplayFunc (displayFcn);
 	glutReshapeFunc (winReshapeFcn);

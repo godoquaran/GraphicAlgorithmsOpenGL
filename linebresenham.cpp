@@ -17,7 +17,7 @@ void setPixel (GLint xCoord, GLint yCoord)
 void lineBres (int x0, int y0, int xEnd, int yEnd)
 {
 	int dx = fabs (xEnd - x0);
-	int dy = fabs(yEnd - y0);
+	int dy = fabs (yEnd - y0);
 	int p = 2 * dy - dx;
 	int twoDy = 2 * dy;
 	int twoDyMinusDx = 2 * (dy - dx);
